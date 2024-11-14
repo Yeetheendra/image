@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Image Grid with Vertical Striped Background</title> 
+<style> body { background: repeating-linear-gradient( to right, lightblue 0%, lightblue 10%, gold 10%, gold 20%, black 20%, black 30%, lightblue 30%, lightblue 40%, gold 40%, gold 50%, black 50%, black 60%, lightblue 60%, lightblue 70%, gold 70%, gold 80%, black 80%, black 90%, lightblue 90%, lightblue 100% ); display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; } .container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; } .container img { width: 200px; height: 200px; border: 5px solid white; transition: transform 0.3s; cursor: pointer; } .container img:hover { transform: scale(1.1); } .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; } .modal-content { position: relative; margin: auto; padding: 20px; width: 80%; max-width: 700px; } .modal-content img { width: 100%; } .close { position: absolute; top: 10px; right: 25px; color: white; font-size: 35px; font-weight: bold; cursor: pointer; } </style>
+</head> 
+<body>
+    <div class="container">
+        <img src="football/1.webp" alt="Image 1" onclick="openModal(this)">
+        <img src="football/2.webp" alt="Image 2" onclick="openModal(this)">
+        <img src="football/3.webp" alt="Image 3" onclick="openModal(this)">
+        <img src="football/4.webp" alt="Image 4" onclick="openModal(this)">
+        <img src="football/5.webp" alt="Image 5" onclick="openModal(this)">
+        <img src="football/6.webp" alt="Image 6" onclick="openModal(this)">
+        <img src="football/7.webp" alt="Image 7" onclick="openModal(this)">
+        <img src="football/9.webp" alt="Image 8" onclick="openModal(this)">
+        <img src="football/10.webp" alt="Image 9" onclick="openModal(this)">
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modalImg" src="">
+        </div>
+    </div>
+
+    <script>
+        function openModal(element) {
+            document.getElementById('myModal').style.display = "flex";
+            document.getElementById('modalImg').src = element.src;
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>
